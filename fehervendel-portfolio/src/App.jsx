@@ -5,23 +5,24 @@ import SplineScene from '../src/Components/SplineScene.jsx';
 
 function App() {
 
-  return (
-    <>
-        <div className='z-10 pointer-events-none'>
-            <Header />
-            <Hero />
-        </div>
-        <SplineScene />
-
-        <div className="pt-[100vh]">
-            <div className='container px-8'>
-                <div>Új komponens1</div>
-                <div>Új komponens2</div>
+    return (
+        <>
+            <div className="relative h-[100vh]">
+                <div className='z-10 relative pointer-events-none max-w-full'>
+                    <Header/>
+                    <Hero/>
+                </div>
+                <SplineScene/>
             </div>
-        </div>
 
-    </>
-  )
+            <div className="container px-8">
+                <div>Ide új tartalom jön</div>
+                <div>Ide új tartalom jön</div>
+                <div>Ide új tartalom jön</div>
+                <div>Ide új tartalom jön</div>
+            </div>
+        </>
+    )
 }
 
-export default App
+export default App;
