@@ -2,7 +2,7 @@ import './Hero.css';
 /*Animations needed*/
 export default function Hero() {
     return (
-        <section className="w-screen flex justify-center bg-transparent">
+        <section id='hero' className="w-screen flex justify-center bg-transparent">
             <div className="container flex flex-col-reverse lg:flex-row w-screen px-8">
 
                 <div className="lg:w-1/2 lg:pb-56 lg:mt-44 mt-96 pt-20 lg:pt-96">
