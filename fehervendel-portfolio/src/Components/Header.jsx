@@ -1,52 +1,102 @@
-import {useEffect, useState} from "react";
-
+import { useEffect, useState } from "react";
+import reactLogo from '../assets/react.svg';
+import HeroButton from '../components/HeroButton';
+import { Menu, X } from 'lucide-react';
+import { createPortal } from "react-dom";
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    function handleMenuClick() {
+        setIsMenuOpen(prevState => !prevState);
+        document.body.classList.toggle('overflow-hidden', !isMenuOpen);
+    }
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
+            setScrolled(window.scrollY > 50);
         }
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    })
+    }, []);
 
-    let cssClasses = "flex justify-center top-0 left-0 fixed w-screen py-4 transition-all duration-300 max-w-full";
+    let cssClasses = "flex justify-center top-0 left-0 fixed w-screen py-4 transition-all duration-300 max-w-full z-50";
 
     if (scrolled) {
-        cssClasses += " bg-white shadow-md backdrop-blur-lg";
+        cssClasses += " bg-black/30 shadow-md backdrop-blur-lg";
     } else {
         cssClasses += ' bg-transparent';
     }
 
-    return (
-        <nav className={cssClasses}>
-            <div className="container px-8">
-                <div>
-                    <img alt="logo"/>
-                </div>
-                <div>
-                    <ol className="flex justify-between items-center text-stone-50">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                    </ol>
-                </div>
-                <div>
-                    <ul className="flex justify-between items-center text-stone-50">
-                        <li>Linkedin</li>
-                        <li>Facebook</li>
-                        <li>Email</li>
-                    </ul>
-                </div>
-            </div>
+    function handleScrollTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }
 
-        </nav>
-    )
+    return (
+        <>
+            <nav id='header' className={cssClasses}>
+                <div className="container px-8 flex items-center justify-between py-2">
+                    <div className="lg:w-1/3">
+                        <a className="cursor-pointer pointer-events-auto" onClick={handleScrollTop}>
+                            <img src={reactLogo} alt="logo" className="w-[55px]" />
+                        </a>
+                    </div>
+                    {isMobile ? (
+                        isMenuOpen ? null :
+                            <button onClick={handleMenuClick} className='text-black pointer-events-auto'>
+                                <Menu size={25} />
+                            </button>
+                        ) : (
+                            <>
+                                <div className="md:w-1/2 lg:w-1/3 px-4">
+                                    <ol className='flex justify-between items-center'>
+                                        <HeroButton link='#hero'>About me</HeroButton>
+                                        <HeroButton link='#hero'>Projects</HeroButton>
+                                        <HeroButton link='#hero'>GitHub</HeroButton>
+                                    </ol>
+                                </div>
+                                <div className="md:w-1/4 lg:w-1/3">
+                                    <ul className='flex justify-end items-center'>
+                                        <HeroButton link='#hero'>LinkedIn</HeroButton>
+                                        <HeroButton link='#hero'>Email</HeroButton>
+                                        <HeroButton link='#hero'>Phone</HeroButton>
+                                    </ul>
+                                </div>
+                            </>
+                        )}
+                </div>
+            </nav>
+
+            {isMenuOpen && createPortal(
+                <ul className="fixed top-0 left-0 w-full h-full bg-black/80 flex flex-col items-center justify-center gap-6 text-white z-50 transition-opacity hamburger-buttons">
+                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}>About me</HeroButton>
+                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}>Projects</HeroButton>
+                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}>GitHub</HeroButton>
+                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}>LinkedIn</HeroButton>
+                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}>Email</HeroButton>
+                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}>Phone</HeroButton>
+
+                    <button onClick={handleMenuClick} className="absolute top-10 right-10 text-black">
+                        <X size={30} />
+                    </button>
+                </ul>,
+                document.body
+            )}
+        </>
+    );
 }
