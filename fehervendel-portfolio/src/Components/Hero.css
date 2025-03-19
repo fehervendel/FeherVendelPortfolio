@@ -1,0 +1,5 @@
+.colorful {
+    background: linear-gradient(45deg, #fa5151, #d400f4, #3377ff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
