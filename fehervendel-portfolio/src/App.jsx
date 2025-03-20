@@ -7,20 +7,31 @@ function App() {
 
     return (
         <>
-            <div className="relative h-[100vh]">
-                <div className='z-10 relative pointer-events-none max-w-full'>
-                    <Header/>
+            <Header/>
+
+            <div className='w-full'>
+                <SplineScene/>
+                <div className='relative z-10 pointer-events-none'>
                     <Hero/>
                 </div>
-                <SplineScene/>
             </div>
 
             <div className="container px-8">
+                <div>1111111111111</div>
+                <div>2222222222222</div>
+                <div>3333333333333</div>
+                <div>Ide új tartalom jön</div>
+                <div>Ide új tartalom jön</div>
+                <div>Ide új tartalom jön</div>
+                <div>Ide új tartalom jön</div>
+                <div>Ide új tartalom jön</div>
+                <div>Ide új tartalom jön</div>
                 <div>Ide új tartalom jön</div>
                 <div>Ide új tartalom jön</div>
                 <div>Ide új tartalom jön</div>
                 <div>Ide új tartalom jön</div>
             </div>
+
         </>
     )
 }
