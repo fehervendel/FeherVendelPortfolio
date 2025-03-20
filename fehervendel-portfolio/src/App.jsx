@@ -38,6 +38,11 @@ function App() {
             }).from('#welcome', {
                 opacity: 0,
                 duration: 1.5,
+            }).to('#welcome', {
+                scale: 10,
+                opacity:0,
+                duration: 0.5,
+                ease: 'power3.inOut',
             });
         }, comp);
         return () => ctx.revert();
@@ -76,7 +81,7 @@ function App() {
                         <span id='dot-2' className="xl:pb-40 lg:pb-52 !text-9xl text text-black">&bull;</span>
                         <h1 id="title-3" className="!text-9xl font-bold lg:!text-8xl xl:!text-9xl text-black big-shadow text-nowrap text-center uppercase !h-1/3">Grow</h1>
                     </div>
-                    <div className='h-screen flex justify-center place-items-center'>
+                    <div className='h-screen flex justify-center place-items-center overflow-x-hidden'>
                         <h1 id="welcome" className="text-7xl sm:!text-9xl text-gray-50 uppercase font-bold neon-shadow">Welcome</h1>
                     </div>
                 </div>
