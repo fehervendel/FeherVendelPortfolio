@@ -1,12 +1,11 @@
 #root {
-  width: 100vw;
-  height: 100vh;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  overflow-x: hidden;
+}
+
+.max-w-100 {
+  max-width: 100%;
 }
 
 .underline-animation {
