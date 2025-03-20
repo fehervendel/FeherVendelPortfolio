@@ -4,6 +4,18 @@
   align-items: center;
 }
 
+.big-shadow {
+  /*text-shadow: -15px 0px 0px rgb(0, 0, 0, 0.4);*/
+}
+
+.neon-shadow {
+  text-shadow: 0 0 7px #fff,
+  0 0 10px #fff,
+  0 0 22px #da00ff,
+  0 0 42px rgba(212, 0, 244, 0.7),
+  0 0 52px rgba(212, 0, 244, 0.33)
+}
+
 .max-w-100 {
   max-width: 100%;
 }
