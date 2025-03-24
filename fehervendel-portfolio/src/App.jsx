@@ -1,9 +1,10 @@
-import './App.css'
+import './App.css';
 import Header from '../src/Components/Header.jsx';
 import Hero from '../src/Components/Hero.jsx';
 import SplineScene from '../src/Components/SplineScene.jsx';
-import { useState, useLayoutEffect, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Intro from "../src/Components/Intro.jsx";
+import AnimationWrapper from "./Components/AnimationWrapper.jsx";
 
 function App() {
     const [isWelcome, setIsWelcome] = useState(true);
@@ -30,7 +31,6 @@ function App() {
         }
     }, [isWelcome]);
 
-
     return (
         <>
             {isWelcome ? (
@@ -47,10 +47,21 @@ function App() {
                     </div>
 
                     <div className="container px-8">
-                        <div>1111111111111</div>
-                        <div>2222222222222</div>
-                        <div>3333333333333</div>
-                        <div>Ide új tartalom jön</div>
+                        <AnimationWrapper animationClass='slide-in-bottom' delay='0.2s'>
+                            <div>
+                                1111111111111
+                            </div>
+                        </AnimationWrapper>
+                        <AnimationWrapper animationClass='slide-in-bottom' delay='0.4s'>
+                        <div>
+                            2222222222222
+                        </div>
+                        </AnimationWrapper>
+                        <AnimationWrapper animationClass='slide-in-bottom' delay='0.6s'>
+                        <div>
+                            3333333333333
+                        </div>
+                        </AnimationWrapper>
                         <div>Ide új tartalom jön</div>
                         <div>Ide új tartalom jön</div>
                         <div>Ide új tartalom jön</div>
