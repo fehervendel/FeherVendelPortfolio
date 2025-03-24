@@ -94,5 +94,5 @@
 }
 
 .slide-in-bottom {
-  animation: slideInBottom 1s ease-out forwards;
+  animation: slideInBottom 0.5s ease-out forwards;
 }
