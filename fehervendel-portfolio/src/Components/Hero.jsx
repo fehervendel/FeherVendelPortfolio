@@ -9,14 +9,14 @@ export default function Hero() {
 
                 <div className="lg:w-1/2 lg:mt-44 md:pb-20 md:mt-72 sm:mt-96 mt-72
                  pt-36 lg:pt-96">
-                    <AnimationWrapper animationClass='slide-in-bottom' delay='0.9s'>
+                    <AnimationWrapper delay='0.9s'>
                         <h1 className="text-stone-50 uppercase font-bold text-center md:text-start pb-52 sm:pb-8  !text-5 md:!text-7xl lg:!text-8xl text-stroke md:whitespace-nowrap">Create <br></br> your <br></br> <span className="whitespace-nowrap">&#123; <span className="colorful">dream</span> &#125;</span> website</h1>
                     </AnimationWrapper>
                 </div>
 
 
                     <div className="lg:w-1/2 flex justify-center md:justify-end text-stroke pt-30">
-                        <AnimationWrapper animationClass='slide-in-bottom' delay='0.7s'>
+                        <AnimationWrapper delay='0.7s'>
                             <h1 className="text-stone-50 uppercase text-center font-bold !text-6 md:!text-8xl lg:!text-9xl lg:text-end">Vendel Fehér</h1>
                         </AnimationWrapper>
                     </div>
