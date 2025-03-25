@@ -1,6 +1,6 @@
 import { useInView } from 'react-intersection-observer';
 
-export default function AnimationWrapper({children, animationClass, delay = '0s'}) {
+export default function AnimationWrapper({children, animationClass = 'slide-in-bottom', delay = '0s'}) {
     const { ref, inView } = useInView({
         triggerOnce: true,
         threshold: 0.5
