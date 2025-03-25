@@ -93,6 +93,68 @@
   }
 }
 
+@keyframes blurAnimation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.blur-animation {
+  animation: blurAnimation 0.3s;
+}
+
 .slide-in-bottom {
   animation: slideInBottom 0.5s ease-out forwards;
+}
+
+.custom-line-height {
+  line-height: 0.85!important;
+}
+
+.custom-card-position {
+  top: calc(50% - 175px);
+  left: calc(50% - 175px);
+}
+
+@media (max-width: 640px) {
+  .custom-card-position {
+    bottom: calc(50% - 125px);
+    left: calc(50% - 125px);
+  }
+}
+
+.left {
+  top: 0;
+  position: sticky;
+}
+
+@media (max-width: 1024px) {
+  .left {
+    top: calc(25%);
+  }
+
+}
+
+.right {
+  top: 0;
+  position: sticky;
+}
+
+.card {
+  transition: 0.5s ease-in-out;
+}
+
+@media (max-width: 1024px) {
+  #bg-blur {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
 }
