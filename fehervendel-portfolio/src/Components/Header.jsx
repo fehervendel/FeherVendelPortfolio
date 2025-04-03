@@ -3,6 +3,7 @@ import reactLogo from '../assets/react.svg';
 import HeroButton from '../components/HeroButton';
 import { Menu, X } from 'lucide-react';
 import { createPortal } from "react-dom";
+import AnimationWrapper from "./AnimationWrapper.jsx";
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
@@ -72,9 +73,7 @@ export default function Header() {
                                 </div>
                                 <div className="md:w-1/4 lg:w-1/3">
                                     <ul className='flex justify-end items-center'>
-                                        <HeroButton link='#hero'>LinkedIn</HeroButton>
-                                        <HeroButton link='#hero'>Email</HeroButton>
-                                        <HeroButton link='#hero'>Phone</HeroButton>
+                                        <HeroButton link='#hero'>Contact</HeroButton>
                                     </ul>
                                 </div>
                             </>
@@ -84,12 +83,12 @@ export default function Header() {
 
             {isMenuOpen && createPortal(
                 <ul className="fixed top-0 left-0 w-full h-full bg-black/80 flex flex-col items-center justify-center gap-6 text-white z-50 transition-opacity hamburger-buttons">
-                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}>About me</HeroButton>
-                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}>Projects</HeroButton>
-                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}>GitHub</HeroButton>
-                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}>LinkedIn</HeroButton>
-                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}>Email</HeroButton>
-                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}>Phone</HeroButton>
+                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper >About me</AnimationWrapper></HeroButton>
+                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.1s">Projects</AnimationWrapper></HeroButton>
+                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.2s">GitHub</AnimationWrapper></HeroButton>
+                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.3s">LinkedIn</AnimationWrapper></HeroButton>
+                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.4s">Email</AnimationWrapper></HeroButton>
+                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.5s">Phone</AnimationWrapper></HeroButton>
 
                     <button onClick={handleMenuClick} className="absolute top-10 right-10 text-black">
                         <X size={30} />
