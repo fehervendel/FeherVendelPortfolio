@@ -11,11 +11,35 @@ import {useInView} from "react-intersection-observer";
 function App() {
     const [isWelcome, setIsWelcome] = useState(true);
     const contentRef = useRef(null);
+    const [cards, setCards] = useState([]);
 
     const { ref, inView } = useInView({
         triggerOnce: false,
         threshold: 0.7
     });
+
+    const fetchCards = async () => {
+        try {
+            const response = await fetch("https://localhost:7217/Card/GetCards", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            })
+
+            const jsonData = await response.json().then();
+            setCards(jsonData);
+        } catch (err){
+            console.error(err);
+        }
+    }
+
+    useEffect(() => {
+        fetchCards();
+    }, [])
+
+    console.log(cards)
 
     useEffect(() => {
         if (!isWelcome && contentRef.current) {
@@ -37,7 +61,7 @@ function App() {
             return () => clearTimeout(delayTimeout);
         }
     }, [isWelcome]);
-
+    console.log(cards.length * 50)
     return (
         <>
             {isWelcome ? (
@@ -57,7 +81,7 @@ function App() {
                     <div className="container px-8">
 
 
-                        <div className="stack-area w-full h-[300vh] flex flex-col lg:flex-row">
+                        <div className={`stack-area w-full h-[${100 + 50 * cards.length}vh] flex flex-col lg:flex-row`}>
                             <div className="left lg:basis-[50%] flex flex-col lg:justify-center lg:h-screen text-stone-50 pe-16">
                                 <AnimationWrapper delay='0.3s'>
                                     <h2 className="text-7xl uppercase font-bold pb-16">About me</h2>
@@ -70,25 +94,9 @@ function App() {
                                 </AnimationWrapper>
                             </div>
                             <div ref={ref} className="right lg:basis-[50%] h-screen relative z-10">
-                                <Card
-                                    color="bg-amber-400"
-                                    title='React'
-                                    shortDescription={"My favorite frontend javascript framework. This page is also designed with React."}/>
-
-                                <Card
-                                    color="bg-[#f13e78]"
-                                    title='React'
-                                    shortDescription={"My favorite frontend javascript framework. This page is also designed with React."}/>
-
-                                <Card
-                                    color="bg-[#585cfd]"
-                                    title='React'
-                                    shortDescription={"My favorite frontend javascript framework. This page is also designed with React."}/>
-
-                                <Card
-                                    color="bg-[#c2d834]"
-                                    title='React'
-                                    shortDescription={"My favorite frontend javascript framework. This page is also designed with React."}/>
+                                {cards && cards.sort((a, b) => a.order - b.order).map(card => (
+                                    <Card key={card.id} color={`bg-[${card.color}]`} title={card.title} shortDescription={card.description} />
+                                ))}
                             </div>
                         </div>
 
