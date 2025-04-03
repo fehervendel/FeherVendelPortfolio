@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function Card({ color, title, shortDescription, ref }) {
+export default function Card({ color, title, shortDescription }) {
 
     useEffect(() => {
         function rotateCards() {
