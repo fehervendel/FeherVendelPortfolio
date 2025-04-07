@@ -158,3 +158,15 @@
     z-index: 1;
   }
 }
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #111111 inset !important;
+  -webkit-text-fill-color: #f5f5f5 !important;
+  transition: background-color 9999s ease-in-out 0s;
+  font-size: 1.25rem !important;
+  font-family: inherit !important;
+}
+
+.custom-checkbox {
+  transform: scale(1.3);
+}
