@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function Card({ color, title, shortDescription }) {
+export default function Card({ title, shortDescription, color = 'white' }) {
 
     useEffect(() => {
         function rotateCards() {
@@ -42,12 +42,9 @@ export default function Card({ color, title, shortDescription }) {
     }, []);
 
     let style = "card sm:w-[350px] w-[250px] sm:h-[350px] h-[250px] rounded-2xl sm:p-8 !p-6 flex flex-col justify-between absolute custom-card-position";
-    if (color) {
-        style += ` ${color}`;
-    }
 
     return (
-        <div className={style}>
+        <div className={style} style={{ backgroundColor: color }}>
             <h3 className='text-stone-950 uppercase font-bold sm:text-6xl text-4xl custom-line-height'>{title}</h3>
             <p className='text-stone-950 sm:text-2xl font-medium'>{shortDescription}</p>
         </div>

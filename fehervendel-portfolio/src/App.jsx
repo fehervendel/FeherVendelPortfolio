@@ -39,7 +39,6 @@ function App() {
         fetchCards();
     }, [])
 
-    console.log(cards)
 
     useEffect(() => {
         if (!isWelcome && contentRef.current) {
@@ -61,7 +60,7 @@ function App() {
             return () => clearTimeout(delayTimeout);
         }
     }, [isWelcome]);
-    console.log(cards.length * 50)
+
     return (
         <>
             {isWelcome ? (
@@ -81,7 +80,7 @@ function App() {
                     <div className="container px-8">
 
 
-                        <div className={`stack-area w-full h-[${100 + 50 * cards.length}vh] flex flex-col lg:flex-row`}>
+                        <div className={`stack-area w-full flex flex-col lg:flex-row`} style={{height: `${100 + 50 * cards.length}vh`}}>
                             <div className="left lg:basis-[50%] flex flex-col lg:justify-center lg:h-screen text-stone-50 pe-16">
                                 <AnimationWrapper delay='0.3s'>
                                     <h2 className="text-7xl uppercase font-bold pb-16">About me</h2>
@@ -95,7 +94,7 @@ function App() {
                             </div>
                             <div ref={ref} className="right lg:basis-[50%] h-screen relative z-10">
                                 {cards && cards.sort((a, b) => a.order - b.order).map(card => (
-                                    <Card key={card.id} color={`bg-[${card.color}]`} title={card.title} shortDescription={card.description} />
+                                    <Card key={card.id} color={card.color} title={card.title} shortDescription={card.description} />
                                 ))}
                             </div>
                         </div>
