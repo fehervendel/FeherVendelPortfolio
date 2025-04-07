@@ -73,7 +73,7 @@ export default function Header() {
                                 </div>
                                 <div className="md:w-1/4 lg:w-1/3">
                                     <ul className='flex justify-end items-center'>
-                                        <HeroButton link='#hero'>Contact</HeroButton>
+                                        <HeroButton link='#form'>Contact</HeroButton>
                                     </ul>
                                 </div>
                             </>
@@ -86,9 +86,7 @@ export default function Header() {
                     <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper >About me</AnimationWrapper></HeroButton>
                     <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.1s">Projects</AnimationWrapper></HeroButton>
                     <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.2s">GitHub</AnimationWrapper></HeroButton>
-                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.3s">LinkedIn</AnimationWrapper></HeroButton>
-                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.4s">Email</AnimationWrapper></HeroButton>
-                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.5s">Phone</AnimationWrapper></HeroButton>
+                    <HeroButton link='#form' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.3s">Contact</AnimationWrapper></HeroButton>
 
                     <button onClick={handleMenuClick} className="absolute top-10 right-10 text-black">
                         <X size={30} />
