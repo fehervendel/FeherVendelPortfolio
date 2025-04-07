@@ -7,6 +7,7 @@ import Intro from "../src/Components/Intro.jsx";
 import AnimationWrapper from "./Components/AnimationWrapper.jsx";
 import Card from "../src/components/Card.jsx";
 import {useInView} from "react-intersection-observer";
+import Form from "../src/Components/Form.jsx";
 
 function App() {
     const [isWelcome, setIsWelcome] = useState(true);
@@ -100,7 +101,7 @@ function App() {
                         </div>
 
 
-                        <div className="text-stone-50 h-[100vh] pt-8"><p>NEXT CONTENT</p></div>
+                        <div className="text-stone-50 pt-8 pb-32"><Form/></div>
                     </div>
                 </div>
 
