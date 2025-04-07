@@ -7,7 +7,7 @@ function Accordion({ title, content }) {
         <div>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full text-left py-4 !text-xl font-medium text-stone-100 flex justify-between items-center !bg-transparent focus:!outline-0 hover:!border-stone-50"
+                className="w-full text-left py-4 !text-xl font-medium text-stone-100 flex justify-between items-center !bg-transparent focus:!outline-0 hover:!border-stone-50 !ps-0"
             >
                 {title}
                 <span>{isOpen ? "▲" : "▼"}</span>

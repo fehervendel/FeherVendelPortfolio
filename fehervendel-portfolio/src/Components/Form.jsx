@@ -1,6 +1,7 @@
 import AnimationWrapper from "./AnimationWrapper.jsx";
 import Accordion from "./Accordion.jsx";
 import { useState } from "react";
+import formCat from '../../public/formCat.png';
 
 export default function Form() {
     const [formData, setFormData] = useState({
@@ -51,16 +52,15 @@ export default function Form() {
     return (
         <div id="form" className="lg:flex gap-16 pt-36 lg:pt-0">
             <div className="flex-1/2 pb-8">
-                <AnimationWrapper><h3 className="text-7xl uppercase font-bold pb-16">Contact me!</h3></AnimationWrapper>
-                <AnimationWrapper delay="0.2s"><p className="text-xl pb-8">Fill the form and I will contact you as soon as possible!
-                <br/>
-                Don't forget to accept the data management information, which You can check below.
-                </p></AnimationWrapper>
+                <AnimationWrapper delay="0.2s">
+                    <img className="mb-2 shadow-gray-50" alt="neon cat" src={formCat} />
+                </AnimationWrapper>
                 <AnimationWrapper delay="0.4s"><Accordion title={"Click here to see data management information."} content={"Description Description Description Description Description Description Description Description"}/></AnimationWrapper>
             </div>
 
             <div className="flex-1/2">
                 <AnimationWrapper delay="0.6s">
+                    <h3 className="text-7xl uppercase font-bold pb-16">Contact me!</h3>
                     <form id="contact-form" onSubmit={handleSubmit}>
                         <label htmlFor="name" className="text-xl">Name:</label>
                         <input className={inputClasses} name="name" type="text" required value={formData.name} onChange={handleChange}/>
