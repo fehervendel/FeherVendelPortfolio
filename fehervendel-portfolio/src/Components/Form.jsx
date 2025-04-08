@@ -1,9 +1,12 @@
 import AnimationWrapper from "./AnimationWrapper.jsx";
 import Accordion from "./Accordion.jsx";
-import { useState } from "react";
+import {useContext, useState} from "react";
 import formCat from '../../public/formCat.png';
+import { ContentContext } from "./ContentContext.jsx";
 
 export default function Form() {
+    const {content}  = useContext(ContentContext);
+    let formContent = content.filter(item => item.sectionId === "form").sort((a, b) => a.order - b.order);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -55,12 +58,12 @@ export default function Form() {
                 <AnimationWrapper delay="0.2s">
                     <img className="mb-2 shadow-gray-50" alt="neon cat" src={formCat} />
                 </AnimationWrapper>
-                <AnimationWrapper delay="0.4s"><Accordion title={"Click here to see data management information."} content={"Description Description Description Description Description Description Description Description"}/></AnimationWrapper>
+                <AnimationWrapper delay="0.4s"><Accordion title={"Click here to see data management information."} content={formContent[1].textContent}/></AnimationWrapper>
             </div>
 
             <div className="flex-1/2">
                 <AnimationWrapper delay="0.6s">
-                    <h3 className="text-7xl uppercase font-bold pb-16">Contact me!</h3>
+                    <h3 className="text-7xl uppercase font-bold pb-16">{formContent[0].textContent}</h3>
                     <form id="contact-form" onSubmit={handleSubmit}>
                         <label htmlFor="name" className="text-xl">Name:</label>
                         <input className={inputClasses} name="name" type="text" required value={formData.name} onChange={handleChange}/>

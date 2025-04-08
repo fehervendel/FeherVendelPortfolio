@@ -2,17 +2,20 @@ import '../App.css';
 import Header from './Header.jsx';
 import Hero from './Hero.jsx';
 import SplineScene from './SplineScene.jsx';
-import { useState, useRef, useEffect } from "react";
+import {useState, useRef, useEffect, useContext} from "react";
 import Intro from "./Intro.jsx";
 import AnimationWrapper from "./AnimationWrapper.jsx";
 import Card from "./Card.jsx";
 import {useInView} from "react-intersection-observer";
 import Form from "./Form.jsx";
+import { ContentContext } from "./ContentContext.jsx";
 
 function HomePage() {
     const [isWelcome, setIsWelcome] = useState(true);
     const contentRef = useRef(null);
     const [cards, setCards] = useState([]);
+    const {content}  = useContext(ContentContext);
+    let aboutMeContent = content.filter(item => item.sectionId === "aboutMe").sort((a, b) => a.order - b.order);
 
     const { ref, inView } = useInView({
         triggerOnce: false,
@@ -29,7 +32,7 @@ function HomePage() {
                 }
             })
 
-            const jsonData = await response.json().then();
+            const jsonData = await response.json();
             setCards(jsonData);
         } catch (err){
             console.error(err);
@@ -84,10 +87,10 @@ function HomePage() {
                         <div className={`stack-area w-full flex flex-col lg:flex-row`} style={{height: `${100 + 50 * cards.length}vh`}}>
                             <div className="left lg:basis-[50%] flex flex-col lg:justify-center lg:h-screen text-stone-50 pe-16">
                                 <AnimationWrapper delay='0.3s'>
-                                    <h2 className="text-7xl uppercase font-bold pb-16">About me</h2>
+                                    <h2 className="text-7xl uppercase font-bold pb-16">{aboutMeContent[0].textContent}</h2>
                                 </AnimationWrapper>
                                 <AnimationWrapper delay='0.5s'>
-                                    <p className="text-xl pb-16">Description description description description description description description <br/>description description description</p>
+                                    <p className="text-xl pb-16 whitespace-pre">{aboutMeContent[1].textContent}</p>
                                 </AnimationWrapper>
                                 <AnimationWrapper delay='0.7s'>
                                     <button className="!text-xl text-stone-950 hover:!bg-stone-950 hover:text-stone-50 hover:!border-stone-50 text-nowrap">Contact me</button>
@@ -104,7 +107,6 @@ function HomePage() {
                         <div className="text-stone-50 pt-8 pb-32"><Form/></div>
                     </div>
                 </div>
-
             )}
         </>
     );
