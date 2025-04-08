@@ -47,7 +47,7 @@ export default function ListedContent({...props}) {
             {isEditing ? (
                 <>
                     <div className="flex">
-                        <h3 className="pe-2">Title:</h3><input className="border border-stone-50" name="sectionId" type="text" value={editData.sectionId} onChange={handleChange} />
+                        <h3 className="pe-2">Section id:</h3><input className="border border-stone-50" name="sectionId" type="text" value={editData.sectionId} onChange={handleChange} />
                     </div>
                     <div className="flex">
                         <p className="pe-2">Order:</p><input className="border border-stone-50" name="order" type="text" value={editData.order} onChange={handleChange} />
