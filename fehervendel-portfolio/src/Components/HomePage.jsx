@@ -8,6 +8,7 @@ import AnimationWrapper from "./AnimationWrapper.jsx";
 import Card from "./Card.jsx";
 import {useInView} from "react-intersection-observer";
 import Form from "./Form.jsx";
+import GithubProjects from "./GithubProjects.jsx";
 import { ContentContext } from "./ContentContext.jsx";
 
 function HomePage() {
@@ -70,11 +71,11 @@ function HomePage() {
             {isWelcome ? (
                 <Intro setIsWelcome={setIsWelcome} />
             ) : (
-                <div id="main-content" ref={contentRef} style={{ opacity: 0 }}>
+                <div id="main-content" className="max-w-full" ref={contentRef} style={{ opacity: 0 }}>
                     { inView && <div id="bg-blur" className="backdrop-blur-lg blur-animation"></div>}
                     <Header/>
 
-                    <div className='w-full'>
+                    <div className='w-full max-w-full'>
                         <SplineScene/>
                         <div className='relative pointer-events-none'>
                             <Hero/>
@@ -85,12 +86,12 @@ function HomePage() {
 
 
                         <div className={`stack-area w-full flex flex-col lg:flex-row`} style={{height: `${100 + 50 * cards.length}vh`}}>
-                            <div className="left lg:basis-[50%] flex flex-col lg:justify-center lg:h-screen text-stone-50 pe-16">
+                            <div className="left lg:basis-[50%] flex flex-col lg:justify-center lg:h-screen text-stone-50 lg:pe-16">
                                 <AnimationWrapper delay='0.3s'>
-                                    <h2 className="text-7xl uppercase font-bold pb-16">{aboutMeContent[0].textContent}</h2>
+                                    <h2 id="aboutMe" className="text-7xl uppercase font-bold pb-16">{aboutMeContent[0].textContent}</h2>
                                 </AnimationWrapper>
                                 <AnimationWrapper delay='0.5s'>
-                                    <p className="text-xl pb-16 whitespace-pre">{aboutMeContent[1].textContent}</p>
+                                    <p className="text-xl pb-16 whitespace-pre-wrap">{aboutMeContent[1].textContent}</p>
                                 </AnimationWrapper>
                                 <AnimationWrapper delay='0.7s'>
                                     <button className="!text-xl text-stone-950 hover:!bg-stone-950 hover:text-stone-50 hover:!border-stone-50 text-nowrap">Contact me</button>
@@ -103,7 +104,7 @@ function HomePage() {
                             </div>
                         </div>
 
-
+                        <div className="text-stone-50 pt-32 lg:pt-8 lg:pb-32"><GithubProjects/></div>
                         <div className="text-stone-50 pt-8 pb-32"><Form/></div>
                     </div>
                 </div>
