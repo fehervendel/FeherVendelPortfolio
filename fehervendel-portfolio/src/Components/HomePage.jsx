@@ -94,7 +94,7 @@ function HomePage() {
                                     <p className="text-xl pb-16 whitespace-pre-wrap">{aboutMeContent[1].textContent}</p>
                                 </AnimationWrapper>
                                 <AnimationWrapper delay='0.7s'>
-                                    <button className="!text-xl text-stone-950 hover:!bg-stone-950 hover:text-stone-50 hover:!border-stone-50 text-nowrap">Contact me</button>
+                                    <button className="!text-xl !text-stone-950 !bg-stone-50 hover:!bg-stone-950 hover:!text-stone-50 hover:!border-stone-50 text-nowrap">Contact me</button>
                                 </AnimationWrapper>
                             </div>
                             <div ref={ref} className="right lg:basis-[50%] h-screen relative z-10">
