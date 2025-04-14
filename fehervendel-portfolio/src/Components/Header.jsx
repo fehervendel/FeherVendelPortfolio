@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import reactLogo from '../assets/react.svg';
+import portfolioLogoCropped from "../assets/portfolioLogoCropped.png";
 import HeroButton from '../components/HeroButton';
 import { Menu, X } from 'lucide-react';
 import { createPortal } from "react-dom";
@@ -54,7 +54,7 @@ export default function Header() {
                 <div className="container px-8 flex items-center justify-between py-2">
                     <div className="lg:w-1/3">
                         <a className="cursor-pointer pointer-events-auto" onClick={handleScrollTop}>
-                            <img src={reactLogo} alt="logo" className="w-[55px]" />
+                            <img src={portfolioLogoCropped} alt="logo" className="w-[55px]" />
                         </a>
                     </div>
                     {isMobile ? (
