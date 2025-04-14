@@ -18,7 +18,7 @@ function Accordion({ title, content }) {
                     isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
                 }`}
             >
-                <div className="pb-4 pt-2 text-stone-300 text-xl whitespace-pre">
+                <div className="pb-4 pt-2 text-stone-300 text-xl whitespace-pre-wrap">
                     {content}
                 </div>
             </div>
