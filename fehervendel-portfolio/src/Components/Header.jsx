@@ -66,9 +66,9 @@ export default function Header() {
                             <>
                                 <div className="md:w-1/2 lg:w-1/3 px-4">
                                     <ol className='flex justify-between items-center'>
-                                        <HeroButton link='#hero'>About me</HeroButton>
-                                        <HeroButton link='#hero'>Projects</HeroButton>
-                                        <HeroButton link='#hero'>GitHub</HeroButton>
+                                        <HeroButton link='#aboutMe'>About me</HeroButton>
+                                        <HeroButton link='#githubProjects'>Projects</HeroButton>
+                                        <HeroButton target="_blank" link='https://github.com/fehervendel/'>GitHub</HeroButton>
                                     </ol>
                                 </div>
                                 <div className="md:w-1/4 lg:w-1/3">
@@ -83,9 +83,9 @@ export default function Header() {
 
             {isMenuOpen && createPortal(
                 <ul className="fixed top-0 left-0 w-full h-full bg-black/80 flex flex-col items-center justify-center gap-6 text-white z-50 transition-opacity hamburger-buttons">
-                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper >About me</AnimationWrapper></HeroButton>
-                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.1s">Projects</AnimationWrapper></HeroButton>
-                    <HeroButton link='#hero' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.2s">GitHub</AnimationWrapper></HeroButton>
+                    <HeroButton link='#aboutMe' handleMenuClick={handleMenuClick}><AnimationWrapper >About me</AnimationWrapper></HeroButton>
+                    <HeroButton link='#githubProjects' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.1s">Projects</AnimationWrapper></HeroButton>
+                    <HeroButton target="_blank" link='https://github.com/fehervendel/' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.2s">GitHub</AnimationWrapper></HeroButton>
                     <HeroButton link='#form' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.3s">Contact</AnimationWrapper></HeroButton>
 
                     <button onClick={handleMenuClick} className="absolute top-10 right-10 text-black">
