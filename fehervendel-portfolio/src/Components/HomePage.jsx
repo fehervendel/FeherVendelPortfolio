@@ -9,6 +9,7 @@ import Card from "./Card.jsx";
 import {useInView} from "react-intersection-observer";
 import Form from "./Form.jsx";
 import GithubProjects from "./GithubProjects.jsx";
+import Footer from "./Footer.jsx";
 import { ContentContext } from "./ContentContext.jsx";
 
 function HomePage() {
@@ -105,7 +106,9 @@ function HomePage() {
                         </div>
 
                         <div className="text-stone-50 pt-32 lg:pt-8 lg:pb-32"><GithubProjects/></div>
-                        <div className="text-stone-50 pt-8 pb-32"><Form/></div>
+                        <div className="text-stone-50 pt-8 pb-16"><Form/></div>
+                        <div className="text-stone-50 pt-8"><Footer/></div>
+
                     </div>
                 </div>
             )}
