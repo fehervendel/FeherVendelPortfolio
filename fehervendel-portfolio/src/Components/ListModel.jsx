@@ -29,7 +29,6 @@ export default function ListModel({content}) {
             })
 
             const jsonData = await response.json();
-            console.log(jsonData)
             setElements(jsonData);
         } catch (err){
             console.error(err);
