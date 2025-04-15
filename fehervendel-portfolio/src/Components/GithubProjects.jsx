@@ -34,7 +34,7 @@ export default function GithubProjects() {
                         cardClass += " hover:border-white/80 border-white/30"
                     }
                     return(
-                    <AnimationWrapper delay={`${index * 0.15 + 0.2}s`}>
+                    <AnimationWrapper key={repo.id} delay={`${index * 0.15 + 0.2}s`}>
                         <a
                             href={repo.html_url}
                             target="_blank"
