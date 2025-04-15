@@ -27,7 +27,7 @@ export default function ListedCards({...props}) {
 
         const token = localStorage.getItem("jwt");
 
-        const response = await fetch(`${baseUrl}}/Card/EditCard`, {
+        const response = await fetch(`${baseUrl}/Card/EditCard`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
