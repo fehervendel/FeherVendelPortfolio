@@ -66,7 +66,7 @@ export default function Header() {
         <>
             <nav id='header' className={cssClasses}>
                 <div className="container px-8 flex items-center justify-between py-2">
-                    <div className="lg:w-1/3">
+                    <div className="lg:w-1/4">
                         <a className="cursor-pointer pointer-events-auto" onClick={handleScrollTop}>
                             <img src={portfolioLogoCropped} alt="logo" className="w-[55px]" />
                         </a>
@@ -78,7 +78,7 @@ export default function Header() {
                             </button>
                         ) : (
                             <>
-                                <div className="md:w-1/2 lg:w-1/3 px-4">
+                                <div className="lg:w-1/2 px-4">
                                     <ol className='flex justify-between items-center'>
                                         <HeroButton link='#aboutMe'>About me</HeroButton>
                                         <HeroButton link='#parallax'>My journey</HeroButton>
@@ -86,7 +86,7 @@ export default function Header() {
                                         <HeroButton target="_blank" link='https://github.com/fehervendel/'>GitHub</HeroButton>
                                     </ol>
                                 </div>
-                                <div className="md:w-1/4 lg:w-1/3">
+                                <div className="lg:w-1/4">
                                     <ul className='flex justify-end items-center'>
                                         <HeroButton link='#form'>Contact</HeroButton>
                                     </ul>
