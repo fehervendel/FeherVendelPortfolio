@@ -23,11 +23,12 @@ export default function Footer() {
                 <p className="!text-xl !text-stone-50 md:px-16 text-center flex items-center py-8 md:py-0">{footerContent[0].textContent}</p>
                 <ol className='text-end flex md:flex-col gap-2 justify-center'>
                     <HeroButton link='#aboutMe'>About me</HeroButton>
+                    <HeroButton link='#parallax'>My Journey</HeroButton>
                     <HeroButton link='#githubProjects'>Projects</HeroButton>
                     <HeroButton target="_blank" link='https://github.com/fehervendel/'>GitHub</HeroButton>
                 </ol>
             </div>
-            <div className="text-stone-50 text-center py-4">
+            <div className="text-stone-50 text-center py-8">
                 2025 © all rights reserved | Created by: Vendel Fehér
             </div>
         </>

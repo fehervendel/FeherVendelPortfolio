@@ -9,6 +9,8 @@ export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const [showHeader, setShowHeader] = useState(true);
 
     function handleMenuClick() {
         setIsMenuOpen(prevState => !prevState);
@@ -26,14 +28,26 @@ export default function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        }
+            const currentScrollY = window.scrollY;
+
+            setScrolled(currentScrollY > 50);
+
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                setShowHeader(false);
+            } else {
+                setShowHeader(true);
+            }
+
+            setLastScrollY(currentScrollY);
+        };
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [lastScrollY]);
 
-    let cssClasses = "flex justify-center top-0 left-0 fixed w-screen py-4 transition-all duration-300 max-w-full z-50";
+    let cssClasses = `flex justify-center left-0 fixed w-screen py-4 transition-all duration-300 max-w-full z-50 ${
+        scrolled ? "bg-black/30 shadow-md backdrop-blur-lg" : "bg-transparent"
+    } ${showHeader ? "top-0" : "-top-32"}`;
 
     if (scrolled) {
         cssClasses += " bg-black/30 shadow-md backdrop-blur-lg";
@@ -67,6 +81,7 @@ export default function Header() {
                                 <div className="md:w-1/2 lg:w-1/3 px-4">
                                     <ol className='flex justify-between items-center'>
                                         <HeroButton link='#aboutMe'>About me</HeroButton>
+                                        <HeroButton link='#parallax'>My journey</HeroButton>
                                         <HeroButton link='#githubProjects'>Projects</HeroButton>
                                         <HeroButton target="_blank" link='https://github.com/fehervendel/'>GitHub</HeroButton>
                                     </ol>
@@ -84,6 +99,7 @@ export default function Header() {
             {isMenuOpen && createPortal(
                 <ul className="fixed top-0 left-0 w-full h-full bg-black/80 flex flex-col items-center justify-center gap-6 text-white z-50 transition-opacity hamburger-buttons">
                     <HeroButton link='#aboutMe' handleMenuClick={handleMenuClick}><AnimationWrapper >About me</AnimationWrapper></HeroButton>
+                    <HeroButton link='#parallax' handleMenuClick={handleMenuClick}><AnimationWrapper >My journey</AnimationWrapper></HeroButton>
                     <HeroButton link='#githubProjects' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.1s">Projects</AnimationWrapper></HeroButton>
                     <HeroButton target="_blank" link='https://github.com/fehervendel/' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.2s">GitHub</AnimationWrapper></HeroButton>
                     <HeroButton link='#form' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.3s">Contact</AnimationWrapper></HeroButton>
