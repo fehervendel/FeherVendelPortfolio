@@ -110,17 +110,17 @@ function HomePage() {
                     <div className="container px-8">
                         <div className={`stack-area w-full flex flex-col lg:flex-row`} style={{height: `${100 + 50 * cards.length}vh`}}>
                             <div className="left lg:basis-[50%] flex flex-col lg:justify-center lg:h-screen text-stone-50 lg:pe-16">
-                                <AnimationWrapper delay='0.3s'>
+                                <AnimationWrapper delay='0.2s'>
                                     <h2 id="aboutMe" className="text-7xl uppercase font-bold pb-16">{aboutMeContent[0].textContent}</h2>
                                 </AnimationWrapper>
-                                <AnimationWrapper delay='0.5s'>
+                                <AnimationWrapper delay='0.3s'>
                                     <p className="text-xl pb-16 whitespace-pre-wrap">{aboutMeContent[1].textContent}</p>
                                 </AnimationWrapper>
-                                <div className="md:flex">
-                                    <AnimationWrapper delay='0.7s'>
+                                <div className="md:flex sm:mb-16 md:mb-0">
+                                    <AnimationWrapper delay='0.2s'>
                                         <a href="#form"><button className="!text-xl !text-stone-950 !bg-stone-50 hover:!bg-stone-950 hover:!text-stone-50 hover:!border-stone-50 text-nowrap me-6 mb-8">Contact me</button></a>
                                     </AnimationWrapper>
-                                    <AnimationWrapper delay='0.9s'>
+                                    <AnimationWrapper delay='0.3s'>
                                         <button onClick={handleDownload} className="!text-xl !text-stone-950 !bg-stone-50 hover:!bg-stone-950 hover:!text-stone-50 hover:!border-stone-50 text-nowrap">Download resume</button>
                                     </AnimationWrapper>
                                 </div>

@@ -53,7 +53,7 @@ export default function Form() {
 
     let inputClasses = "border-b-amber-50 border-b-2 text-xl w-full focus:outline-0 pt-2 mb-6 pb-1";
     return (
-        <div id="form" className="lg:flex gap-16 pt-36 lg:pt-0 pb-12">
+        <div id="form" className="lg:flex gap-16 pt-16 lg:pt-0 pb-12">
             <div className="flex-1/2 pb-8">
                 <AnimationWrapper delay="0.2s">
                     <img className="mb-2 shadow-gray-50" alt="neon cat" src={formCat} />

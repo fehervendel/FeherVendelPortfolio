@@ -18,7 +18,7 @@ export default function GithubProjects() {
 
 
     return (
-        <div id="githubProjects" className="text-white px-6 pt-12 pb-32">
+        <div id="githubProjects" className="text-white px-6 pt-12 lg:pb-32">
             <AnimationWrapper delay="0.2s"><h2 className="lg:text-7xl text-6xl font-bold mb-24 text-center">{githubProjectsContent[0].textContent}</h2></AnimationWrapper>
             <AnimationWrapper delay="0.4s">
                 <div className="flex justify-center mb-16">
