@@ -9,10 +9,11 @@ export default function EditPage() {
     const [isUploadClicked, setIsUploadClicked] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [uploadStatus, setUploadStatus] = useState("");
+    let baseUrl = import.meta.env.VITE_BASE_URL;
 
     const fetchModels = async () => {
         try {
-            const response = await fetch("https://localhost:7217/Model/GetModels", {
+            const response = await fetch(`${baseUrl}/Model/GetModels`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -64,7 +65,7 @@ export default function EditPage() {
 
         try {
             const token = localStorage.getItem("jwt");
-            const res = await fetch("https://localhost:7217/resume/ChangeResume", {
+            const res = await fetch(`${baseUrl}/resume/ChangeResume`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`

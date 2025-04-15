@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
     const [code, setCode] = useState("");
     const navigate = useNavigate();
+    let baseUrl = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         const jwt = localStorage.getItem("jwt");
@@ -13,7 +14,7 @@ export default function Login() {
     }, [navigate]);
 
     const handleLogin = async () => {
-        const response = await fetch("https://localhost:7217/Auth/login", {
+        const response = await fetch(`${baseUrl}/Auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

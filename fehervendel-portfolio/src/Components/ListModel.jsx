@@ -6,14 +6,15 @@ import ListedEmails from "./ListedEmails.jsx";
 export default function ListModel({content}) {
     const [elements, setElements] = useState([]);
     const [url, setUrl] = useState("");
+    let baseUrl = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         if(content === "Card"){
-            setUrl("https://localhost:7217/Card/GetCards")
+            setUrl(`${baseUrl}/Card/GetCards`)
         } else if(content === "Content"){
-            setUrl("https://localhost:7217/Content/GetContent")
+            setUrl(`${baseUrl}/Content/GetContent`)
         } else if(content === "Email"){
-            setUrl("https://localhost:7217/Email/GetEmails")
+            setUrl(`${baseUrl}/Email/GetEmails`)
         }
     }, [content])
 

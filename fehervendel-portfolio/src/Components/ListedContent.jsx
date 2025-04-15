@@ -8,6 +8,8 @@ export default function ListedContent({...props}) {
         textContent: props.textContent,
     });
 
+    let baseUrl = import.meta.env.VITE_BASE_URL;
+
     function handleEdit() {
         setIsEditing(prevState => !prevState);
     }
@@ -24,7 +26,7 @@ export default function ListedContent({...props}) {
 
         const token = localStorage.getItem("jwt");
 
-        const response = await fetch("https://localhost:7217/Content/EditContent", {
+        const response = await fetch(`${baseUrl}/Content/EditContent`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

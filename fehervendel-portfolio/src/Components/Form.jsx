@@ -14,6 +14,8 @@ export default function Form() {
         message: ""
     });
 
+    let baseUrl = import.meta.env.VITE_BASE_URL;
+
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData((prevData) => ({
@@ -25,7 +27,7 @@ export default function Form() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch("https://localhost:7217/Email/AddEmail", {
+        const response = await fetch(`${baseUrl}/Email/AddEmail`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

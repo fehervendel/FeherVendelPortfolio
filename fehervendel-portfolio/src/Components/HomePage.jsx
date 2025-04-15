@@ -20,6 +20,8 @@ function HomePage() {
     const {content}  = useContext(ContentContext);
     let aboutMeContent = content.filter(item => item.sectionId === "aboutMe").sort((a, b) => a.order - b.order);
 
+    let baseUrl = import.meta.env.VITE_BASE_URL;
+
     const { ref, inView } = useInView({
         triggerOnce: false,
         threshold: 0.7
@@ -27,7 +29,7 @@ function HomePage() {
 
     const fetchCards = async () => {
         try {
-            const response = await fetch("https://localhost:7217/Card/GetCards", {
+            const response = await fetch(`${baseUrl}/Card/GetCards`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -70,7 +72,7 @@ function HomePage() {
 
     const handleDownload = async () => {
         try {
-            const response = await fetch("https://localhost:7217/resume/GetResume");
+            const response = await fetch(`${baseUrl}/resume/GetResume`);
 
             if (!response.ok) {
                 throw new Error("Error downloading file.");

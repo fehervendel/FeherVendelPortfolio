@@ -6,10 +6,11 @@ export const ContentContext = createContext({
 
 export default function ContentContextProvider({children}){
     const [ contentState, setContentState ] = useState({ content: [] });
+    let baseUrl = import.meta.env.VITE_BASE_URL;
 
     const fetchContent = async () => {
         try {
-            const response = await fetch("https://localhost:7217/Content/GetContent", {
+            const response = await fetch(`${baseUrl}/Content/GetContent`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

@@ -9,6 +9,8 @@ export default function ListedCards({...props}) {
         description: props.description,
     });
 
+    let baseUrl = import.meta.env.VITE_BASE_URL;
+
     function handleEdit() {
         setIsEditing(prevState => !prevState);
     }
@@ -25,7 +27,7 @@ export default function ListedCards({...props}) {
 
         const token = localStorage.getItem("jwt");
 
-        const response = await fetch("https://localhost:7217/Card/EditCard", {
+        const response = await fetch(`${baseUrl}}/Card/EditCard`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
