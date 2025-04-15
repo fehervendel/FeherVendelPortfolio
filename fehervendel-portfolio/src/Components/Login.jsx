@@ -25,6 +25,13 @@ export default function Login() {
         if (response.ok) {
             const data = await response.json();
             localStorage.setItem("jwt", data.token);
+            const expiresAt = Date.now() + 4 * 60 * 60 * 1000;
+            localStorage.setItem("jwtExpires", expiresAt.toString());
+
+            setTimeout(() => {
+                localStorage.removeItem("jwt");
+                navigate("/login");
+            },   60 * 60 * 1000);
             navigate("/edit");
         } else {
             alert("Wrong authenticator code!");
@@ -38,7 +45,7 @@ export default function Login() {
     };
 
     return (
-        <div className="text-stone-50 flex flex-col h-screen flex flex-col items-center justify-center">
+        <div className="text-stone-50 flex flex-col h-screen items-center justify-center">
                 <input
                     className="text-stone-50 p-4 text-2xl text-center"
                     type="number"
