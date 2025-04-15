@@ -20,6 +20,10 @@ export default function ListModel({content}) {
 
 
     const fetchData = async () => {
+        setElements([]);
+        if(!url) {
+            return
+        }
         try {
             const response = await fetch(url, {
                 method: "GET",
@@ -29,8 +33,10 @@ export default function ListModel({content}) {
                 }
             })
 
-            const jsonData = await response.json();
-            setElements(jsonData);
+            if(response.ok){
+                const jsonData = await response.json();
+                setElements(jsonData);
+            }
         } catch (err){
             console.error(err);
         }
