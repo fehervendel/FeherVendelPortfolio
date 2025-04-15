@@ -11,6 +11,7 @@ import Form from "./Form.jsx";
 import GithubProjects from "./GithubProjects.jsx";
 import Footer from "./Footer.jsx";
 import { ContentContext } from "./ContentContext.jsx";
+import ParallaxSection from "./ParallaxSection.jsx";
 
 function HomePage() {
     const [isWelcome, setIsWelcome] = useState(true);
@@ -72,7 +73,7 @@ function HomePage() {
             {isWelcome ? (
                 <Intro setIsWelcome={setIsWelcome} />
             ) : (
-                <div id="main-content" className="max-w-full" ref={contentRef} style={{ opacity: 0 }}>
+                <div id="main-content" className="max-w-full w-screen flex flex-col items-center" ref={contentRef} style={{ opacity: 0 }}>
                     { inView && <div id="bg-blur" className="backdrop-blur-lg blur-animation"></div>}
                     <Header/>
 
@@ -84,8 +85,6 @@ function HomePage() {
                     </div>
 
                     <div className="container px-8">
-
-
                         <div className={`stack-area w-full flex flex-col lg:flex-row`} style={{height: `${100 + 50 * cards.length}vh`}}>
                             <div className="left lg:basis-[50%] flex flex-col lg:justify-center lg:h-screen text-stone-50 lg:pe-16">
                                 <AnimationWrapper delay='0.3s'>
@@ -104,11 +103,12 @@ function HomePage() {
                                 ))}
                             </div>
                         </div>
-
-                        <div className="text-stone-50 pt-32 lg:pt-8 lg:pb-32"><GithubProjects/></div>
+                    </div>
+                    <ParallaxSection />
+                    <div className="container px-8">
+                        <div className="text-stone-50 pt-8"><GithubProjects/></div>
                         <div className="text-stone-50 pt-8 pb-16"><Form/></div>
                         <div className="text-stone-50 pt-8"><Footer/></div>
-
                     </div>
                 </div>
             )}
