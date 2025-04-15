@@ -63,8 +63,12 @@ export default function EditPage() {
         formData.append("file", selectedFile);
 
         try {
+            const token = localStorage.getItem("jwt");
             const res = await fetch("https://localhost:7217/resume/ChangeResume", {
                 method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
                 body: formData,
             });
 

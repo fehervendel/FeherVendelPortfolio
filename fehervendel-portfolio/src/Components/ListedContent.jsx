@@ -22,10 +22,13 @@ export default function ListedContent({...props}) {
     const handleSave = async (e) => {
         e.preventDefault();
 
+        const token = localStorage.getItem("jwt");
+
         const response = await fetch("https://localhost:7217/Content/EditContent", {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify({
                 Id: props.id,
