@@ -68,6 +68,29 @@ function HomePage() {
         }
     }, [isWelcome]);
 
+    const handleDownload = async () => {
+        try {
+            const response = await fetch("https://localhost:7217/resume/GetResume");
+
+            if (!response.ok) {
+                throw new Error("Error downloading file.");
+            }
+
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "Vendel-Feher-resume.pdf";
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error("Error downloading file:", error);
+        }
+    };
+
     return (
         <>
             {isWelcome ? (
@@ -93,9 +116,15 @@ function HomePage() {
                                 <AnimationWrapper delay='0.5s'>
                                     <p className="text-xl pb-16 whitespace-pre-wrap">{aboutMeContent[1].textContent}</p>
                                 </AnimationWrapper>
-                                <AnimationWrapper delay='0.7s'>
-                                    <button className="!text-xl !text-stone-950 !bg-stone-50 hover:!bg-stone-950 hover:!text-stone-50 hover:!border-stone-50 text-nowrap">Contact me</button>
-                                </AnimationWrapper>
+                                <div className="md:flex">
+                                    <AnimationWrapper delay='0.7s'>
+                                        <a href="#form"><button className="!text-xl !text-stone-950 !bg-stone-50 hover:!bg-stone-950 hover:!text-stone-50 hover:!border-stone-50 text-nowrap me-6 mb-8">Contact me</button></a>
+                                    </AnimationWrapper>
+                                    <AnimationWrapper delay='0.9s'>
+                                        <button onClick={handleDownload} className="!text-xl !text-stone-950 !bg-stone-50 hover:!bg-stone-950 hover:!text-stone-50 hover:!border-stone-50 text-nowrap">Download resume</button>
+                                    </AnimationWrapper>
+                                </div>
+
                             </div>
                             <div ref={ref} className="right lg:basis-[50%] h-screen relative z-10">
                                 {cards && cards.sort((a, b) => a.order - b.order).map(card => (
