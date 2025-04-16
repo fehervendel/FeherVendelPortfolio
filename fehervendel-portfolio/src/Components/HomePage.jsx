@@ -66,7 +66,7 @@ function HomePage() {
 
     const handleDownload = async () => {
         try {
-            const response = await fetch(`${baseUrl}/resume/GetResume`);
+            const response = await fetch(`${baseUrl}/Resume/GetResume`);
 
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
