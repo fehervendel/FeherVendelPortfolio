@@ -71,29 +71,30 @@ export default function Form() {
                 <AnimationWrapper delay="0.2s">
                     <img className="mb-2 shadow-gray-50" alt="neon cat" src={formCat} />
                 </AnimationWrapper>
-                <AnimationWrapper delay="0.4s">
+                <AnimationWrapper delay="0.2s">
                     <Accordion title={"Click here to see data management information."} content={formContent[1].textContent}/>
                 </AnimationWrapper>
             </div>
 
             <div className="flex-1/2">
-                <AnimationWrapper delay="0.6s">
+                <AnimationWrapper delay="0.2s">
                     <h3 className="text-4xl md:text-7xl uppercase font-bold pb-16">{formContent[0].textContent}</h3>
+                </AnimationWrapper>
                     <form id="contact-form" onSubmit={handleSubmit}>
-                        <label htmlFor="name" className="text-xl">Name:</label>
-                        <input className={inputClasses} name="name" type="text" required value={formData.name} onChange={handleChange}/>
-                        <label htmlFor="email" className="text-xl">Email:</label>
-                        <input className={inputClasses} name="email" type="email" required value={formData.email} onChange={handleChange}/>
-                        <label htmlFor="phone" className="text-xl">Phone:</label>
-                        <input className={inputClasses} name="phone" type="tel" required value={formData.phone} onChange={handleChange}/>
-                        <label htmlFor="message" className="text-xl">Message:</label>
-                        <textarea className={inputClasses} name="message" required rows="4" value={formData.message} onChange={handleChange}/>
-                        <label htmlFor="dataManagementInformation" className="flex mb-8">
+                        <AnimationWrapper delay="0.2s"><label htmlFor="name" className="text-xl">Name:</label>
+                            <input className={inputClasses} name="name" type="text" required value={formData.name} onChange={handleChange}/></AnimationWrapper>
+                        <AnimationWrapper delay="0.2s"><label htmlFor="email" className="text-xl">Email:</label>
+                            <input className={inputClasses} name="email" type="email" required value={formData.email} onChange={handleChange}/></AnimationWrapper>
+                        <AnimationWrapper delay="0.2s"><label htmlFor="phone" className="text-xl">Phone:</label>
+                            <input className={inputClasses} name="phone" type="tel" required value={formData.phone} onChange={handleChange}/></AnimationWrapper>
+                        <AnimationWrapper delay="0.2s"><label htmlFor="message" className="text-xl">Message:</label>
+                            <textarea className={inputClasses} name="message" required rows="4" value={formData.message} onChange={handleChange}/></AnimationWrapper>
+                        <AnimationWrapper delay="0.2s"><label htmlFor="dataManagementInformation" className="flex mb-8">
                             <input type="checkbox" className="custom-checkbox" name="dataManagementAccepted" checked={formData.dataManagementAccepted}
                                    onChange={handleChange} required/>
                             <p className="ps-4">I accept the data management information.</p>
-                        </label>
-                        <button
+                        </label></AnimationWrapper>
+                        <AnimationWrapper delay="0.2s"><button
                             disabled={isSubmitting}
                             className="!text-xl !text-stone-50 !border-[#00bcff] !border-2 !bg-transparent !transition duration-300 hover:!bg-[#00bcff] hover:!text-stone-950 text-nowrap disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 px-6 py-2"
                             type="submit"
@@ -105,9 +106,8 @@ export default function Form() {
                                 </svg>
                             )}
                             {isSubmitting ? "Submitting..." : "Submit"}
-                        </button>
+                        </button></AnimationWrapper>
                     </form>
-                </AnimationWrapper>
             </div>
         </div>
     )
