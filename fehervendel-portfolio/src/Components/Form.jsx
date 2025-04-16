@@ -78,7 +78,7 @@ export default function Form() {
                         <label htmlFor="dataManagementInformation" className="flex mb-8">
                             <input type="checkbox" className="custom-checkbox" name="dataManagementInformation" required/><p className="ps-4">I accept the data management information.</p>
                         </label>
-                        <button className="!text-xl !text-stone-950 !bg-stone-50 hover:!bg-stone-950 hover:!text-stone-50 hover:!border-stone-50 text-nowrap" type="submit">Submit</button>
+                        <button className="!text-xl !text-stone-50 !border-[#00bcff] !border-2 !bg-transparent !transition duration-300 hover:!bg-[#00bcff] hover:!text-stone-950  text-nowrap" type="submit">Submit</button>
                     </form>
                 </AnimationWrapper>
             </div>

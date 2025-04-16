@@ -120,10 +120,10 @@ function HomePage() {
                                 </AnimationWrapper>
                                 <div className="md:flex sm:mb-16 md:mb-0">
                                     <AnimationWrapper delay='0.2s'>
-                                        <a href="#form"><button className="!text-xl !text-stone-950 !bg-stone-50 hover:!bg-stone-950 hover:!text-stone-50 hover:!border-stone-50 text-nowrap me-6 mb-8">Contact me</button></a>
+                                        <a href="#form"><button className="!text-xl !text-stone-50 !border-[#da02fb] !border-2 !bg-transparent !transition duration-300 hover:!bg-[#da02fb] hover:!text-stone-950 text-nowrap me-6 mb-8">Contact me</button></a>
                                     </AnimationWrapper>
                                     <AnimationWrapper delay='0.3s'>
-                                        <button onClick={handleDownload} className="!text-xl !text-stone-950 !bg-stone-50 hover:!bg-stone-950 hover:!text-stone-50 hover:!border-stone-50 text-nowrap">Download resume</button>
+                                        <button onClick={handleDownload} className="!text-xl !text-stone-50 !border-[#00bcff] !border-2 !bg-transparent !transition duration-300 hover:!bg-[#00bcff] hover:!text-stone-950  text-nowrap">Download resume</button>
                                     </AnimationWrapper>
                                 </div>
 
