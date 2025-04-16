@@ -15,8 +15,12 @@ function Accordion({ title, content }) {
 
             <div
                 className={`transition-all duration-500 ease-in-out ${
-                    isOpen ? "opacity-100" : "max-h-0 opacity-0"
+                    isOpen ? "opacity-100 max-h-none" : "opacity-0 max-h-0"
                 }`}
+                style={{
+                    overflow: "hidden",
+                    maxHeight: isOpen ? "none" : "0", // Dinamikusan kezeli a maxHeight
+                }}
             >
                 <div className="pb-4 pt-2 text-stone-300 text-xl whitespace-pre-wrap">
                     {content}
