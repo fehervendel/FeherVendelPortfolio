@@ -100,7 +100,7 @@ function HomePage() {
 
                     <div className="container px-2 md:px-8">
 
-                        <div className="md:hidden flex flex-col justify-center text-stone-50">
+                        <div className="lg:hidden flex flex-col justify-center text-stone-50">
                             <AnimationWrapper delay='0.2s'>
                                 <h2 id="aboutMe" className="md:text-7xl text-4xl uppercase font-bold pb-8 md:pb-16">{aboutMeContent[0].textContent}</h2>
                             </AnimationWrapper>
@@ -119,7 +119,7 @@ function HomePage() {
 
                         <div className={`stack-area w-full flex flex-col lg:flex-row`} style={{height: `${100 + 50 * cards.length}vh`}}>
 
-                            <div className="left lg:basis-[50%] hidden md:flex flex-col lg:justify-center lg:h-screen text-stone-50 lg:pe-16">
+                            <div className="left lg:basis-[50%] hidden lg:flex flex-col lg:justify-center lg:h-screen text-stone-50 lg:pe-16">
                                 <AnimationWrapper delay='0.2s'>
                                     <h2 id="aboutMe" className="md:text-7xl text-4xl uppercase font-bold pb-8 md:pb-16">{aboutMeContent[0].textContent}</h2>
                                 </AnimationWrapper>
