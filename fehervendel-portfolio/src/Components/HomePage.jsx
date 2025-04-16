@@ -146,7 +146,7 @@ function HomePage() {
                     <ParallaxSection />
                     <div className="container px-2 md:px-8">
                         <div className="text-stone-50 pt-8"><GithubProjects/></div>
-                        <div className="text-stone-50 pt-8 pb-16"><Form/></div>
+                        <div className="text-stone-50 pt-8"><Form/></div>
                         <div className="text-stone-50 pt-8"><Footer/></div>
                     </div>
                 </div>
