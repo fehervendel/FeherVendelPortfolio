@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import portfolioLogoCropped from "../assets/portfolioLogoCropped.png";
-import HeroButton from '../components/HeroButton';
+import HeroButton from '../components/HeroButton.jsx';
 import { Menu, X } from 'lucide-react';
 import { createPortal } from "react-dom";
 import AnimationWrapper from "./AnimationWrapper.jsx";
