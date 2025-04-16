@@ -17,11 +17,11 @@ export default function Footer() {
     return (
         <>
             <div id="footer" className="border-t border-b border-stone-50 w-full md:flex py-8 justify-between border-b-amber-50/30">
-                <a className="cursor-pointer pointer-events-auto flex justify-center md:block" onClick={handleScrollTop}>
-                    <img src={portfolioLogoCropped} alt="logo" className="w-[125px]"/>
+                <a className="cursor-pointer pointer-events-auto flex justify-center items-center" onClick={handleScrollTop}>
+                    <img src={portfolioLogoCropped} alt="logo" className="w-[125px] object-contain"/>
                 </a>
                 <p className="!text-xl !text-stone-50 md:px-16 text-center flex items-center py-8 md:py-0">{footerContent[0].textContent}</p>
-                <ol className='text-end flex md:flex-col gap-2 justify-center'>
+                <ol className='text-end flex flex-col sm:flex-row md:flex-col gap-2 items-center justify-center'>
                     <HeroButton link='#aboutMe'>About me</HeroButton>
                     <HeroButton link='#parallax'>My Journey</HeroButton>
                     <HeroButton link='#githubProjects'>Projects</HeroButton>

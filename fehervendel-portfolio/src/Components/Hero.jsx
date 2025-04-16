@@ -13,7 +13,7 @@ export default function Hero() {
             <div className="container flex flex-col-reverse lg:flex-row px-8">
 
 
-                <div className="lg:w-1/2 lg:mt-44 md:pb-20 md:mt-72 sm:mt-96 mt-72
+                <div className="lg:w-1/2 lg:mt-44 md:pb-20 md:mt-60 sm:mt-40 mt-28
                  pt-36 lg:pt-96">
                     <AnimationWrapper delay='0.9s'>
                         <h1 className="text-stone-50 uppercase font-bold text-center md:text-start pb-52 sm:pb-8  !text-5 md:!text-7xl lg:!text-8xl text-stroke md:whitespace-nowrap">{heroContent[1].textContent} <br></br> {heroContent[2].textContent} <br></br> <span className="whitespace-nowrap">&#123; <span className="colorful">{heroContent[3].textContent}</span> &#125;</span> {heroContent[4].textContent}</h1>

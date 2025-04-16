@@ -73,7 +73,7 @@ export default function Header() {
                     </div>
                     {isMobile ? (
                         isMenuOpen ? null :
-                            <button onClick={handleMenuClick} className='text-black pointer-events-auto'>
+                            <button onClick={handleMenuClick} className='text-black pointer-events-auto !bg-stone-50'>
                                 <Menu size={25} />
                             </button>
                         ) : (
@@ -104,7 +104,7 @@ export default function Header() {
                     <HeroButton target="_blank" link='https://github.com/fehervendel/' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.2s">GitHub</AnimationWrapper></HeroButton>
                     <HeroButton link='#form' handleMenuClick={handleMenuClick}><AnimationWrapper delay="0.3s">Contact</AnimationWrapper></HeroButton>
 
-                    <button onClick={handleMenuClick} className="absolute top-10 right-10 text-black">
+                    <button onClick={handleMenuClick} className="absolute top-10 right-10 text-black !bg-stone-50">
                         <X size={30} />
                     </button>
                 </ul>,

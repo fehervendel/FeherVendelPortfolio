@@ -65,7 +65,7 @@ export default function Form() {
 
             <div className="flex-1/2">
                 <AnimationWrapper delay="0.6s">
-                    <h3 className="text-7xl uppercase font-bold pb-16">{formContent[0].textContent}</h3>
+                    <h3 className="text-4xl md:text-7xl uppercase font-bold pb-16">{formContent[0].textContent}</h3>
                     <form id="contact-form" onSubmit={handleSubmit}>
                         <label htmlFor="name" className="text-xl">Name:</label>
                         <input className={inputClasses} name="name" type="text" required value={formData.name} onChange={handleChange}/>

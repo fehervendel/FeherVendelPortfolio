@@ -99,7 +99,7 @@ function HomePage() {
                 <Intro setIsWelcome={setIsWelcome} />
             ) : (
                 <div id="main-content" className="max-w-full w-screen flex flex-col items-center" ref={contentRef} style={{ opacity: 0 }}>
-                    { inView && <div id="bg-blur" className="backdrop-blur-lg blur-animation"></div>}
+                    { inView && <div id="bg-blur" className="backdrop-blur-lg blur-animation !max-w-full"></div>}
                     <Header/>
 
                     <div className='w-full max-w-full'>
@@ -109,11 +109,11 @@ function HomePage() {
                         </div>
                     </div>
 
-                    <div className="container px-8">
+                    <div className="container px-2 md:px-8">
                         <div className={`stack-area w-full flex flex-col lg:flex-row`} style={{height: `${100 + 50 * cards.length}vh`}}>
                             <div className="left lg:basis-[50%] flex flex-col lg:justify-center lg:h-screen text-stone-50 lg:pe-16">
                                 <AnimationWrapper delay='0.2s'>
-                                    <h2 id="aboutMe" className="text-7xl uppercase font-bold pb-16">{aboutMeContent[0].textContent}</h2>
+                                    <h2 id="aboutMe" className="md:text-7xl text-4xl uppercase font-bold pb-8 md:pb-16">{aboutMeContent[0].textContent}</h2>
                                 </AnimationWrapper>
                                 <AnimationWrapper delay='0.3s'>
                                     <p className="text-xl pb-16 whitespace-pre-wrap">{aboutMeContent[1].textContent}</p>
@@ -136,7 +136,7 @@ function HomePage() {
                         </div>
                     </div>
                     <ParallaxSection />
-                    <div className="container px-8">
+                    <div className="container px-2 md:px-8">
                         <div className="text-stone-50 pt-8"><GithubProjects/></div>
                         <div className="text-stone-50 pt-8 pb-16"><Form/></div>
                         <div className="text-stone-50 pt-8"><Footer/></div>
