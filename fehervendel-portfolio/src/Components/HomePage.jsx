@@ -6,7 +6,6 @@ import {useState, useRef, useEffect, useContext} from "react";
 import Intro from "./Intro.jsx";
 import AnimationWrapper from "./AnimationWrapper.jsx";
 import Card from "./Card.jsx";
-import {useInView} from "react-intersection-observer";
 import Form from "./Form.jsx";
 import GithubProjects from "./GithubProjects.jsx";
 import Footer from "./Footer.jsx";
@@ -21,11 +20,6 @@ function HomePage() {
     let aboutMeContent = content.filter(item => item.sectionId === "aboutMe").sort((a, b) => a.order - b.order);
 
     let baseUrl = import.meta.env.VITE_BASE_URL;
-
-    const { ref, inView } = useInView({
-        triggerOnce: false,
-        threshold: 0.7
-    });
 
     const fetchCards = async () => {
         try {
@@ -74,10 +68,6 @@ function HomePage() {
         try {
             const response = await fetch(`${baseUrl}/resume/GetResume`);
 
-            if (!response.ok) {
-                throw new Error("Error downloading file.");
-            }
-
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
 
@@ -99,7 +89,6 @@ function HomePage() {
                 <Intro setIsWelcome={setIsWelcome} />
             ) : (
                 <div id="main-content" className="max-w-full w-screen flex flex-col items-center" ref={contentRef} style={{ opacity: 0 }}>
-                    { inView && <div id="bg-blur" className="backdrop-blur-lg blur-animation !max-w-full"></div>}
                     <Header/>
 
                     <div className='w-full max-w-full'>
@@ -110,8 +99,27 @@ function HomePage() {
                     </div>
 
                     <div className="container px-2 md:px-8">
+
+                        <div className="md:hidden flex flex-col justify-center text-stone-50">
+                            <AnimationWrapper delay='0.2s'>
+                                <h2 id="aboutMe" className="md:text-7xl text-4xl uppercase font-bold pb-8 md:pb-16">{aboutMeContent[0].textContent}</h2>
+                            </AnimationWrapper>
+                            <AnimationWrapper delay='0.3s'>
+                                <p className="text-xl pb-16 whitespace-pre-wrap">{aboutMeContent[1].textContent}</p>
+                            </AnimationWrapper>
+                            <div className="md:flex sm:mb-16 md:mb-0">
+                                <AnimationWrapper delay='0.2s'>
+                                    <a href="#form"><button className="!text-xl !text-stone-50 !border-[#da02fb] !border-2 !bg-transparent !transition duration-300 hover:!bg-[#da02fb] hover:!text-stone-950 text-nowrap me-6 mb-8">Contact me</button></a>
+                                </AnimationWrapper>
+                                <AnimationWrapper delay='0.3s'>
+                                    <button onClick={handleDownload} className="!text-xl !text-stone-50 !border-[#00bcff] !border-2 !bg-transparent !transition duration-300 hover:!bg-[#00bcff] hover:!text-stone-950  text-nowrap">Download resume</button>
+                                </AnimationWrapper>
+                            </div>
+                        </div>
+
                         <div className={`stack-area w-full flex flex-col lg:flex-row`} style={{height: `${100 + 50 * cards.length}vh`}}>
-                            <div className="left lg:basis-[50%] flex flex-col lg:justify-center lg:h-screen text-stone-50 lg:pe-16">
+
+                            <div className="left lg:basis-[50%] hidden md:flex flex-col lg:justify-center lg:h-screen text-stone-50 lg:pe-16">
                                 <AnimationWrapper delay='0.2s'>
                                     <h2 id="aboutMe" className="md:text-7xl text-4xl uppercase font-bold pb-8 md:pb-16">{aboutMeContent[0].textContent}</h2>
                                 </AnimationWrapper>
@@ -128,7 +136,7 @@ function HomePage() {
                                 </div>
 
                             </div>
-                            <div ref={ref} className="right lg:basis-[50%] h-screen relative z-10">
+                            <div className="right lg:basis-[50%] h-screen relative z-10">
                                 {cards && cards.sort((a, b) => a.order - b.order).map(card => (
                                     <Card key={card.id} color={card.color} title={card.title} shortDescription={card.description} />
                                 ))}
