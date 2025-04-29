@@ -1,109 +1,60 @@
-import {useRef, useLayoutEffect, useEffect} from "react";
+import { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
-import laptop from "../../public/laptop.jpg";
 
 export default function Intro({ setIsWelcome }) {
     const comp = useRef(null);
 
-    useEffect(() => {
-        if (comp.current) {
-            let opacity = 0;
-
-            const delayTimeout = setTimeout(() => {
-                const interval = setInterval(() => {
-                    opacity += 0.03;
-                    if (opacity >= 1) {
-                        opacity = 1;
-                        clearInterval(interval);
-                    }
-                    comp.current.style.opacity = opacity;
-                }, 30);
-
-                return () => clearInterval(interval);
-            }, 500);
-
-        }
-    }, []);
-
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
+            const t1 = gsap.timeline({
+                onComplete: () => {
+                    setIsWelcome(false);
+                }
+            });
 
-            const animateStrip = (id, duration, reverse = false) => {
-                const strip = document.getElementById(id);
-                const width = strip.offsetWidth / 2;
-
-                const fromX = reverse ? -width : 0;
-                const toX = reverse ? 0 : -width;
-
-                gsap.fromTo(
-                    strip,
-                    { x: fromX },
-                    {
-                        x: toX,
-                        duration: duration,
-                        ease: "linear",
-                        repeat: -1,
-                        onRepeat: () => {
-                            gsap.set(strip, { x: fromX });
-                        },
-                    }
-                );
-            };
-
-            animateStrip("strip-1", 10);
-            animateStrip("strip-2", 14, true);
-            animateStrip("strip-3", 20);
-
-            gsap.timeline({
-                delay: 30,
-                onComplete: () => setIsWelcome(false),
-            }).to(comp.current, { opacity: 0, duration: 1 });
+            t1.from('#intro-slider', {
+                opacity: 0,
+                duration: 1.3,
+                delay: 0.5,
+            }).from(['#title-1', '#dot-1', '#title-2', '#dot-2', '#title-3'], {
+                opacity: 0,
+                x: '+=300',
+                stagger: 0.3
+            }).to(['#title-1', '#dot-1', '#title-2', '#dot-2', '#title-3'], {
+                opacity: 0,
+                x: '-=300',
+                delay: 0.2,
+                stagger: 0.3
+            }).to('#intro-slider', {
+                opacity: 0,
+                duration: 0.5,
+            }).from('#welcome', {
+                opacity: 0,
+                duration: 1.5,
+            }).to('#welcome', {
+                scale: 10,
+                opacity: 0,
+                duration: 0.5,
+                ease: 'power3.inOut',
+            });
         }, comp);
 
         return () => ctx.revert();
     }, []);
 
-    const renderStripImages = () =>
-        Array(2)
-            .fill(0)
-            .flatMap(() => [
-                <img key={Math.random()} src={laptop} className="h-full object-cover p-4 rounded-4xl" />,
-                <img key={Math.random()} src={laptop} className="h-full object-cover p-4 rounded-4xl" />,
-                <img key={Math.random()} src={laptop} className="h-full object-cover p-4 rounded-4xl" />,
-                <img key={Math.random()} src={laptop} className="h-full object-cover p-4 rounded-4xl" />,
-                <img key={Math.random()} src={laptop} className="h-full object-cover p-4 rounded-4xl" />,
-                <img key={Math.random()} src={laptop} className="h-full object-cover p-4 rounded-4xl" />,
-            ]);
-
     return (
-        <div ref={comp} className="relative w-full h-screen overflow-hidden opacity-0">
-            <button
-                onClick={() => setIsWelcome(false)}
-                className="absolute top-0 right-4 z-50 !bg-transparent text-white px-4 !py-1 rounded hover:!border-transparent transition"
-            >
-                Skip >>
-            </button>
-
-            {/* Strip 1 */}
-            <div className="absolute top-0 left-0 w-full h-1/3 overflow-hidden pt-4">
-                <div id="strip-1" className="flex w-max h-full">
-                    {renderStripImages()}
-                </div>
+        <div ref={comp} className="relative w-[100%] lg:px-16">
+            <button onClick={() => setIsWelcome(false)} className="absolute top-4 right-4 z-50 !bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition">Skip</button>
+            <div id="intro-slider" className="h-screen p-10 bg-stone-50 absolute top-0 justify-between left-0 z-10 w-full flex flex-col lg:flex-row items-center tracking-tight overflow-x-hidden">
+                <h1 id="title-1" className="!text-8xl font-bold lg:!text-8xl xl:!text-9xl text-black big-shadow uppercase text-center !h-1/3">Code</h1>
+                <span id='dot-1' className="xl:pb-40 lg:pb-52 !text-9xl text text-black">&bull;</span>
+                <h1 id="title-2" className="!text-8xl font-bold lg:!text-8xl xl:!text-9xl text-black big-shadow uppercase text-center !h-1/3">Flow</h1>
+                <span id='dot-2' className="xl:pb-40 lg:pb-52 !text-9xl text text-black">&bull;</span>
+                <h1 id="title-3" className="!text-8xl font-bold lg:!text-8xl xl:!text-9xl text-black big-shadow text-nowrap text-center uppercase !h-1/3">Grow</h1>
             </div>
-
-            {/* Strip 2 */}
-            <div className="absolute top-1/3 left-0 w-full h-1/3 overflow-hidden">
-                <div id="strip-2" className="flex w-max h-full">
-                    {renderStripImages()}
-                </div>
-            </div>
-
-            {/* Strip 3 */}
-            <div className="absolute bottom-0 left-0 w-full h-1/3 overflow-hidden pb-4">
-                <div id="strip-3" className="flex w-max h-full">
-                    {renderStripImages()}
-                </div>
+            <div className='h-screen flex justify-center place-items-center overflow-x-hidden'>
+                <h1 id="welcome" className="text-7xl sm:!text-9xl text-gray-50 uppercase font-bold neon-shadow">Welcome</h1>
             </div>
         </div>
     );
-}
+};
